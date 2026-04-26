@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>Sticky Tasks</h1>
+            <button id="themeToggle" class="icon-btn">🌓</button>
+        </header>
+
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Nouvelle note...">
+            <button id="addBtn">Ajouter</button>
+        </div>
+
+        <nav class="filters">
+            <button data-filter="all" class="active">Toutes</button>
+            <button data-filter="active">Actives</button>
+            <button data-filter="completed">Terminées</button>
+        </nav>
+
+        <ul id="taskList"></ul>
+
+        <footer>
+            <button id="clearCompleted" class="danger-btn">Effacer les terminées</button>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
