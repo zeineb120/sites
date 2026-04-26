@@ -1,0 +1,121 @@
+:root {
+    --bg: #f8fafc;
+    --app-bg: rgba(255, 255, 255, 0.7);
+    --text: #1e293b;
+    --accent: #6366f1;
+    --note-bg: #fef08a; /* Jaune post-it par défaut */
+    --note-text: #854d0e;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Variables pour le Mode Sombre */
+body.dark-mode {
+    --bg: #0f172a;
+    --app-bg: rgba(30, 41, 59, 0.7);
+    --text: #f1f5f9;
+    --note-bg: #334155;
+    --note-text: #f1f5f9;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.4s ease;
+    min-height: 100vh;
+}
+
+.app {
+    width: 100%;
+    max-width: 500px;
+    backdrop-filter: blur(10px);
+    background: var(--app-bg);
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+/* Grille de notes */
+#taskList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+    margin: 20px 0;
+}
+
+li {
+    background: var(--note-bg);
+    color: var(--note-text);
+    padding: 15px;
+    aspect-ratio: 1 / 1; /* Carré comme un post-it */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    transform: rotate(-2deg); /* Légère rotation pour l'effet réaliste */
+    transition: transform 0.2s;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+li:nth-child(even) { transform: rotate(2deg); }
+
+li:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+}
+
+li.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+    filter: grayscale(0.5);
+}
+
+/* Boutons et Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: var(--note-bg);
+    color: var(--note-text);
+    outline: none;
+}
+
+.filters {
+    display: flex;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.filters button {
+    flex: 1;
+    font-size: 0.8rem;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.filters button.active {
+    background: var(--accent);
+    color: white;
+}
+
+.danger-btn {
+    background: #f87171;
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
